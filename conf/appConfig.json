@@ -1,9 +1,6 @@
 {
     "app": {
-        "webroot": "public",
-        "uploadDir": "uploadDir",
-        "maxTotalUploadSizePerRequestInMB": 10,
-        "maxFileSizeMB": 5
+        "webroot": "public"
     },
     "server": {
         "port": 8080

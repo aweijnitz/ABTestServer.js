@@ -1,20 +1,15 @@
-var appConf = require('./conf/appConfig.json');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var util = require('util');
 
-
-var log4js = require('log4js');
-log4js.configure('./conf/log4js.json');
-var logger = log4js.getLogger('app');
-
-
-var setupServer = function setupServer(appConf, logger) {
+var setupServer = function setupServer(appConf, log4js) {
+    var logger = log4js.getLogger('app');
     var app = express();
 
     logger.info('Configuring server ');
     logger.warn('SERVER IN MODE: ' + app.get('env'));
+    app.set('port', (appConf.server.port || process.env.PORT) || 8080);
 
 
     logger.info('Configuring view engine');
@@ -75,4 +70,5 @@ var setupServer = function setupServer(appConf, logger) {
 };
 
 
-module.exports = setupServer(appConf, logger);
+//module.exports = setupServer(appConf, logger);
+module.exports = setupServer;
