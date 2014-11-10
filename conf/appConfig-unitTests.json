@@ -2,6 +2,9 @@
     "app": {
         "webroot": "public"
     },
+    "db": {
+        "dbFile": "./workdir/alltests.lokidb"
+    },
     "server": {
         "port": 7979
     }

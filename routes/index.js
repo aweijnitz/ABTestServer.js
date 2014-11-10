@@ -7,9 +7,6 @@ log4js.configure('./conf/log4js.json');
 var logger = log4js.getLogger("index");
 
 
-// Load route handlers (doubling as rudimentary MVC controllers)
-//var uploadHandler = require('./upload.js');
-
 // Remember, in Express 4, '/' is the root under which this route is mounted, so does not
 // necessarily correspond to the absolute root of the domain.
 //
@@ -19,7 +16,6 @@ router.get('/', function(req, res) {
 });
 
 
-//router.post('/dostuff', uploadHandler(appConf, log4js));
 
 
 module.exports = router;

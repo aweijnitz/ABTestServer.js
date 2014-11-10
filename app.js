@@ -10,6 +10,8 @@ var setupServer = function setupServer(appConf, log4js) {
     logger.info('Configuring server ');
     logger.warn('SERVER IN MODE: ' + app.get('env'));
     app.set('port', (appConf.server.port || process.env.PORT) || 8080);
+    express.db = new (require('./lib/datasource'))(appConf.db);
+
 
 
     logger.info('Configuring view engine');
@@ -32,8 +34,11 @@ var setupServer = function setupServer(appConf, log4js) {
 
 
     logger.info('Setting application routes');
-    var routes = require('./routes/index');
-    app.use('/', routes);
+    var index = require('./routes/index');
+    var api = require('./routes/api');
+    app.use('/', index);
+    app.use('/tests', api);
+
 
 /// catch 404 and forwarding to error handler
     app.use(function (req, res, next) {
