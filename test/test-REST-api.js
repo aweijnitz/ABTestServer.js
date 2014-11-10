@@ -6,9 +6,8 @@ var request = require('superagent');
 var appConf = require('../conf/appConfig-unitTests.json');
 var log4js = require('log4js');
 log4js.configure('./conf/log4js-unitTests.json');
-// log4js.clearAppenders();
-// log4js.restoreConsole();
 var logger = log4js.getLogger('TEST');
+
 var app = require('../app')(appConf, log4js);
 
 
@@ -32,7 +31,7 @@ describe('Basic API', function () {
     // start a test server
     before(function() {
         server = app.listen(app.get('port'), function () {
-            logger.info('Server listening on port ' + server.address().port);
+            //logger.info('Server listening on port ' + server.address().port);
         });
     });
 

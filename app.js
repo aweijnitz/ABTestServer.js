@@ -3,9 +3,15 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var util = require('util');
 
+var inspect = function(obj) {
+    console.log("INSPECT: "+util.inspect(obj, { colors: true }));
+};
+
 var setupServer = function setupServer(appConf, log4js) {
     var logger = log4js.getLogger('app');
     var app = express();
+    app.set('env', (appConf.server.env || 'production'));
+//    inspect(process.env);
 
     logger.info('Configuring server ');
     logger.warn('SERVER IN MODE: ' + app.get('env'));
@@ -24,6 +30,9 @@ var setupServer = function setupServer(appConf, log4js) {
     if (app.get('env') === 'development') {
         var devFormat = ':method :url - Status: :status Content-length: :content-length';
         app.use(log4js.connectLogger(log4js.getLogger("http"), { format: devFormat, level: 'auto' }));
+    } else if (app.get('env') === 'test') {
+        var devFormat = ':method :url - Status: :status Content-length: :content-length';
+        //app.use(log4js.connectLogger(log4js.getLogger("http"), { format: devFormat, level: 'auto' }));
     } else
         app.use(log4js.connectLogger(log4js.getLogger("http"), { level: 'auto' }));
 

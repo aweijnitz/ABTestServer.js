@@ -6,6 +6,8 @@
         "dbFile": "./workdir/alltests.lokidb"
     },
     "server": {
-        "port": 7979
+        "port": 7979,
+        "env": "test"
+
     }
 }
