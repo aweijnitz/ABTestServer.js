@@ -126,7 +126,7 @@ describe('Basic API', function () {
             request
                 .post(variant0url(testId))
                 .end(function (res) {
-                    console.log(util.inspect(res.body) + ' '+testId);
+//                    console.log(util.inspect(res.body) + ' '+testId);
 
                     (res.status).should.equal(200);
                     res.body.testID.should.equal(testId);
