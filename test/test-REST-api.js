@@ -21,20 +21,19 @@ describe('Basic API', function () {
     var variantName0 = '0';
     var variantName1 = '1';
     var variant0url = function (testID) {
-        return baseURL + '/view/' + testID + '/' + variantName0;
+        return baseURL + '/'+testID+'/view/' + variantName0;
     };
     var variant1url = function (testID) {
-        return baseURL + '/view/' + testID + '/' + variantName1;
-    };
-
-    var test1url = function (testID) {
-        return baseURL + '/' + testID;
+        return baseURL + '/'+testID+ '/view/' + variantName1;
     };
     var convert0url = function (testID) {
-        return baseURL + '/convert/' + testID + '/' + variantName0;
+        return baseURL + '/'+testID+'/convert/' + variantName0;
     };
     var convert1url = function (testID) {
-        return baseURL + '/convert/' + testID + '/' + variantName1;
+        return baseURL + '/'+testID+'/convert/' + variantName1;
+    };
+    var test1url = function (testID) {
+        return baseURL + '/' + testID;
     };
 
     // Test helper
@@ -68,7 +67,7 @@ describe('Basic API', function () {
             });
     });
 
-    it('Should return testID when PUTing to ' + baseURL, function (done) {
+    it('Should return testID when PUTing to top URL (' + baseURL + ')', function (done) {
         request
             .put(baseURL)
             .end(function (res) {

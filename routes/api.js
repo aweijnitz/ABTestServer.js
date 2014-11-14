@@ -76,7 +76,7 @@ router.put('/', function (req, res) {
 });
 
 /* POST increase count on a given test variant [0 or 1]. */
-router.post('/view/:testid/:variant', function (req, res) {
+router.post('/:testid/view/:variant', function (req, res) {
     var o = null;
     try {
         o = incView(req.params.testid, req.params.variant);
@@ -88,7 +88,7 @@ router.post('/view/:testid/:variant', function (req, res) {
 
 
 /* POST increase conversion count for a test variant. */
-router.post('/convert/:testid/:variant', function (req, res) {
+router.post('/:testid/convert/:variant', function (req, res) {
     res.send(incConversion(req.params.testid, req.params.variant)).end()
 });
 
