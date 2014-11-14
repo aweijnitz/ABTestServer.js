@@ -82,7 +82,7 @@ router.post('/:testid/view/:variant', function (req, res) {
         o = incView(req.params.testid, req.params.variant);
         res.send(o).end()
     } catch (err) {
-        res.status(404).send({ error: -1, msg: 'No such test ' + req.params.testid}).end();
+        res.status(404).send({ errorCode: -1, msg: 'No such test ' + req.params.testid}).end();
     }
 });
 

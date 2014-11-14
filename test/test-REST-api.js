@@ -144,7 +144,7 @@ describe('Basic API', function () {
             .end(function (res) {
 
                 (res.status).should.equal(404);
-                (res.body.error).should.equal(-1);
+                (res.body.errorCode).should.equal(-1);
                 done();
             });
 
