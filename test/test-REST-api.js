@@ -62,7 +62,7 @@ describe('Basic API', function () {
             .get(test1url())
             .end(function (res) {
                 //  console.log(util.inspect(res.body));
-                (res.status).should.equal(200);
+                (res.status).should.equal(404);
                 res.body.should.be.empty;
                 done();
             });
