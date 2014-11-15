@@ -24,7 +24,7 @@ significant difference, with some degree of confidence that the result is correc
 
 **Typical setup**
 
-*TEST: "Sign up now and get 10% off!" (B) is more efficient than the "Sign up now and win a hamster!" (A)*
+*TEST: "Sign up now and get 10% off!" is more efficient than "Sign up now and win a hamster!"*
 
 |Variant |Views| Conversions|
 |:-------|:---:|:----------:|
