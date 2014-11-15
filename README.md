@@ -54,7 +54,7 @@ register views and conversions on the variants.
 
 Example response:
 
-```JSON
+```Javascript
 { testID: 't01415997289263' }
 ```
 
@@ -66,7 +66,7 @@ about the test result (if it is significant etc).
 
 Example response (only showing relevant properties):
 
-```JSON
+```Javascript
 { testID: 't11415994525154',
   variantViews: [ 0, 2 ],
   conversions: [ 0, 1 ],
@@ -93,7 +93,7 @@ POST to http://<yourhost:port>/tests/<test id>/view/1
 
 Example response (only showing relevant properties):
 
-```JSON
+```Javascript
 { testID: 't21415997386400',
       variantViews: [ 1, 0 ],
       conversions: [ 0, 0 ]
@@ -117,7 +117,7 @@ POST to http://<yourhost:port>/tests/<test id>/convert/1
 
 Example response (only showing relevant properties):
 
-```JSON
+```Javascript
 { testID: 't31415997462875',
   variantViews: [ 0, 0 ],
   conversions: [ 1, 0 ]
