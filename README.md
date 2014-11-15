@@ -3,6 +3,8 @@ A/B Test Server
 
 This is a server that keeps track of AB tests. Clients communicate over a REST based API. It is written in Node.js, using Express4.
 
+Build status: [![Build Status](https://travis-ci.org/aweijnitz/ABTestServer.js.png)](https://travis-ci.org/aweijnitz/ABTestServer.js)
+
 # The basics
 AB testing for websites and apps, sometimes also referred to as split testing, is a statistical test method to compare 
 the relative effectiveness of two different alternatives. Typical examples include measuring which wording or display 
