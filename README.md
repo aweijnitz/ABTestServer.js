@@ -1,7 +1,7 @@
 A/B Test Server
 ==============
 
-This is a server that keeps track of AB tests. Clients communicate over a REST based API. It is written in Node.js, using Express4.
+This is a server that keeps track of AB tests. Clients communicate over a REST style API. It is written in Node.js, using Express4.
 
 Build status: [![Build Status](https://travis-ci.org/aweijnitz/ABTestServer.js.png)](https://travis-ci.org/aweijnitz/ABTestServer.js)
 
@@ -26,21 +26,21 @@ significant difference, with some degree of confidence that the result is correc
 
 **Typical setup**
 
-*TEST: "Sign up now and get 10% off!" is more efficient than "Sign up now and win a hamster!"*
+*TEST: "Sign up now and get 10% off!" (test) is more efficient than "Sign up now and win a hamster!" (control)*
 
 |Variant |Views| Conversions|
 |:-------|:---:|:----------:|
 |A| 1000 | 230 |
 |B| 1003 | 450 | 
 
-The server will keep track of the progress of the test. You need to supply the view and conversion events (REST calls).
+The server will keep track of the progress of the test. You need to supply the view and conversion events (HTTP calls).
 
 
 
 ## Key concepts
-To understand how to use the REST API, it will be very helpful to be familiar with some terminology.
+To understand how to use the HTTP API, it will be very helpful to be familiar with some terminology.
 
-- *Null hypothesis:*  This is the actual test. Example: "Showing a teaser with an image leads to more click-throughs than showing a teaser with only text.
+- *A test:*  Example: "Showing a teaser with an image (test) leads to more click-throughs than showing a teaser with only text (control).
 - *Variant:*  There are always two variants that are being tested. Normally referred to as A and B.
 - *Conversion:*  Conversion is the success action that counts towards a variant. Example conversion: 
 
