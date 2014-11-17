@@ -138,7 +138,7 @@ Example response (only showing relevant properties):
 # Starting server on http://localhost:8080 (default config)
 - ```npm start```
 
-The actual start script is located in __./bin/wwww__
+The actual start script is located in __./bin/www__
 
 # Changing configuration 
 See file __./conf__ folder. There are two sets of configurations, one default set and then a set used for the unit tests.
