@@ -65,6 +65,7 @@ Make a HTTP GET call to http://<yourhost:port>/tests/<test id>
 
 The server will respond with an object containing an array of the most recently created tests.
 about the test result (if it is significant etc).
+
 Example response (only showing relevant properties):
 ```Javascript
 { tests: [
