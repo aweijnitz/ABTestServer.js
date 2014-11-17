@@ -101,7 +101,7 @@ describe('Basic API', function () {
     });
 
 
-    it('Should return test object with status when GETting a existent test', function (done) {
+    it('Should return test object with status when GETting an existent test', function (done) {
         newObj(function (testId) {
 
             request
