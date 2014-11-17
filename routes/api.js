@@ -9,7 +9,27 @@ if (db == null || typeof db == 'undefined')
     console.log("NO DB");
 
 
+// Used to generate unique ids (see createTest below)
 var testCounter = 0;
+
+// Used to keep the most recent tests.
+// TODO: Move to DB/common store, since this only works for SINGLE instance.
+var recentTests = [];
+var maxLengthRecent = 20;
+
+var addToRecent = function (tst) {
+    recentTests.push(tst);
+    if (recentTests.length > maxLengthRecent)
+        recentTests = recentTests.slice(-1 * maxLengthRecent);
+};
+
+
+// Get most recent tests
+var getMostRecent = function () {
+    return recentTests;
+};
+
+
 
 // Make empty new AB test object, with given test id
 var newTest = function (testID) {
@@ -50,29 +70,39 @@ var incConversion = function (testID, variant) {
     return o;
 };
 
+var addStats = function(o) {
+    o.stats = {
+        isSignificant: stat.isSignificant(o),
+        isSignificantForA: stat.isSignificantForA(o),
+        isSignificantForB: stat.isSignificantForB(o),
+        changePercent: stat.changePercent(o),
+        probabilityOfB: stat.probabilityOfB(o)
+    };
+    return o;
+};
 
 /* GET test status. */
 router.get('/:testid?', function (req, res) {
     var id = req.params.testid; // might be undefined, then all running tests listed
     var o = getObj(id);
     if (!!o) {
-        o.stats = {
-            isSignificant: stat.isSignificant(o),
-            isSignificantForA: stat.isSignificantForA(o),
-            isSignificantForB: stat.isSignificantForB(o),
-            changePercent: stat.changePercent(o),
-            probabilityOfB: stat.probabilityOfB(o)
-        };
+        o = addStats(o);
         res.send(o).end();
     }
+    else if (id === undefined)
+        res.status(200).send({ tests: getMostRecent(maxLengthRecent).map(addStats) }).end();
     else
-        res.status(404).send({}).end();
+        res.status(404).send({ }).end();
+
 
 });
 
 
 router.put('/', function (req, res) {
-    res.send({ testID: createTest().testID });
+    var t = createTest();
+    addToRecent(t);
+
+    res.send({ testID: t.testID });
 });
 
 /* POST increase count on a given test variant [0 or 1]. */

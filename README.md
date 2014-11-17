@@ -60,6 +60,42 @@ Example response:
 { testID: 't01415997289263' }
 ```
 
+## Get status of most recent tests
+Make a HTTP GET call to http://<yourhost:port>/tests/<test id>
+
+The server will respond with an object containing an array of the most recently created tests.
+about the test result (if it is significant etc).
+Example response (only showing relevant properties):
+```javascript
+{ tests:
+[ { testID: 't01416255379377',
+variantViews: [ 0, 0 ],
+conversions: [ 0, 0 ],
+stats:
+{ isSignificant: false,
+isSignificantForA: false,
+isSignificantForB: false,
+changePercent: null,
+probabilityOfB: null } },
+{ testID: 't11416255379385',
+variantViews: [ 0, 0 ],
+conversions: [ 0, 0 ],
+stats:
+{ isSignificant: false,
+isSignificantForA: false,
+isSignificantForB: false,
+changePercent: null,
+probabilityOfB: null } },
+{ testID: 't21416255379387',
+variantViews: [ 0, 0 ],
+conversions: [ 0, 0 ],
+stats:
+{ isSignificant: false,
+isSignificantForA: false,
+isSignificantForB: false,
+changePercent: null,
+probabilityOfB: null } } ] }
+```
 ## Get status of a test
 Make a HTTP GET call to http://<yourhost:port>/tests/<test id>
 

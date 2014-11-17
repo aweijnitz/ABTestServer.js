@@ -21,16 +21,16 @@ describe('Basic API', function () {
     var variantName0 = '0';
     var variantName1 = '1';
     var variant0url = function (testID) {
-        return baseURL + '/'+testID+'/view/' + variantName0;
+        return baseURL + '/' + testID + '/view/' + variantName0;
     };
     var variant1url = function (testID) {
-        return baseURL + '/'+testID+ '/view/' + variantName1;
+        return baseURL + '/' + testID + '/view/' + variantName1;
     };
     var convert0url = function (testID) {
-        return baseURL + '/'+testID+'/convert/' + variantName0;
+        return baseURL + '/' + testID + '/convert/' + variantName0;
     };
     var convert1url = function (testID) {
-        return baseURL + '/'+testID+'/convert/' + variantName1;
+        return baseURL + '/' + testID + '/convert/' + variantName1;
     };
     var test1url = function (testID) {
         return baseURL + '/' + testID;
@@ -56,9 +56,31 @@ describe('Basic API', function () {
         server.close();
     });
 
+
+    it('Should return the most recent tests when GETting base URL', function (done) {
+        newObj(function (testId0) {
+            newObj(function (testId1) {
+                newObj(function (testId2) {
+                    // check
+                    request
+                        .get(baseURL)
+                        .end(function (res) {
+                            console.log(util.inspect(res.body, { depth: 3 }));
+                            (res.status).should.equal(200);
+                            res.body.tests.should.be.an.Array;
+                            res.body.tests.should.have.length(3);
+                            done();
+                        });
+                });
+            });
+        });
+
+    });
+
+
     it('Should return empty object when GETting a non-existent test', function (done) {
         request
-            .get(test1url())
+            .get(test1url('noId'))
             .end(function (res) {
                 //  console.log(util.inspect(res.body));
                 (res.status).should.equal(404);
