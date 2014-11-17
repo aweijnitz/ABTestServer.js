@@ -72,7 +72,6 @@ describe('Statistical functions', function () {
             variantViews: [1000, 1000],
             conversions: [500, 495]
         };
-
         //(stat.isSignificantDebugInfo(testResult)).should.be.false;
         (stat.isSignificant(testResult)).should.be.false;
         (stat.probabilityOfB(testResult)).should.be.approximately(0.4115, 0.1);

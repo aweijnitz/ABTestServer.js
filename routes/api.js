@@ -30,7 +30,6 @@ var getMostRecent = function () {
 };
 
 
-
 // Make empty new AB test object, with given test id
 var newTest = function (testID) {
     return { testID: testID, variantViews: [0, 0], conversions: [0 , 0] }
@@ -70,7 +69,7 @@ var incConversion = function (testID, variant) {
     return o;
 };
 
-var addStats = function(o) {
+var addStats = function (o) {
     o.stats = {
         isSignificant: stat.isSignificant(o),
         isSignificantForA: stat.isSignificantForA(o),
@@ -124,3 +123,4 @@ router.post('/:testid/convert/:variant', function (req, res) {
 
 
 module.exports = router;
+

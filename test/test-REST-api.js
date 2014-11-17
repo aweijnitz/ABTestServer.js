@@ -65,7 +65,7 @@ describe('Basic API', function () {
                     request
                         .get(baseURL)
                         .end(function (res) {
-                            console.log(util.inspect(res.body, { depth: 3 }));
+                            //console.log(util.inspect(res.body, { depth: 3 }));
                             (res.status).should.equal(200);
                             res.body.tests.should.be.an.Array;
                             res.body.tests.should.have.length(3);
@@ -122,7 +122,7 @@ describe('Basic API', function () {
                                     request
                                         .get(test1url(testId))
                                         .end(function (res) {
-                                            // console.log(util.inspect(res.body, { colors: true }));
+                                            //console.log(util.inspect(res.body, { colors: true, depth: 3 }));
 
                                             (res.status).should.equal(200);
                                             (res.body.variantViews[1]).should.equal(2);

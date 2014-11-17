@@ -68,30 +68,30 @@ about the test result (if it is significant etc).
 Example response (only showing relevant properties):
 ```Javascript
 { tests: [
-    { testID: 't01416255379377',
+    { testID: 't01416257230283',
         variantViews: [ 0, 0 ],
         conversions: [ 0, 0 ],
         stats: { isSignificant: false,
             isSignificantForA: false,
             isSignificantForB: false,
-            changePercent: null,
-            probabilityOfB: null } },
-    { testID: 't11416255379385',
+            changePercent: 0,
+            probabilityOfB: 0.5 } },
+    { testID: 't11416257230291',
         variantViews: [ 0, 0 ],
         conversions: [ 0, 0 ],
         stats: { isSignificant: false,
             isSignificantForA: false,
             isSignificantForB: false,
-            changePercent: null,
-            probabilityOfB: null } },
-    { testID: 't21416255379387',
+            changePercent: 0,
+            probabilityOfB: 0.5 } },
+    { testID: 't21416257230293',
         variantViews: [ 0, 0 ],
         conversions: [ 0, 0 ],
         stats: { isSignificant: false,
             isSignificantForA: false,
             isSignificantForB: false,
-            changePercent: null,
-            probabilityOfB: null } }
+            changePercent: 0,
+            probabilityOfB: 0.5 } }
 ] }
 ```
 ## Get status of a test
@@ -103,15 +103,17 @@ about the test result (if it is significant etc).
 Example response (only showing relevant properties):
 
 ```Javascript
-{ testID: 't11415994525154',
-  variantViews: [ 0, 2 ],
-  conversions: [ 0, 1 ],
-  stats:
-   { isSignificant: false,
-     isSignificantForA: false,
-     isSignificantForB: false,
-     changePercent: null,
-     probabilityOfB: null } }
+{
+    testID: 't41416257485316',
+    variantViews: [ 0, 2 ],
+    conversions: [ 0, 1 ],
+    stats: { isSignificant: false,
+        isSignificantForA: false,
+        isSignificantForB: false,
+        changePercent: 0,
+        probabilityOfB: 0.9213503964711087
+    }
+}
 ```
 
 ## Counting up views
