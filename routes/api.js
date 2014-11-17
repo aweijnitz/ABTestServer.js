@@ -17,6 +17,64 @@ var testCounter = 0;
 var recentTests = [];
 var maxLengthRecent = 20;
 
+
+//////////////////////////////////////////////////////////////////////////
+//
+//  REST API
+//
+
+/* GET test status.
+ */
+router.get('/:testid?', function (req, res) {
+    var id = req.params.testid; // might be undefined, then all running tests listed
+    var o = getObj(id);
+    if (!!o) {
+        o = addStats(o);
+        res.send(o).end();
+    }
+    else if (id === undefined)
+        res.status(200).send({ tests: getMostRecent(maxLengthRecent).map(addStats) }).end();
+    else
+        res.status(404).send({ }).end();
+
+
+});
+
+/* PUT to create new test
+ */
+router.put('/', function (req, res) {
+    var t = createTest();
+    addToRecent(t);
+
+    res.send({ testID: t.testID });
+});
+
+/* POST increase count on a given test variant [0 or 1].
+ */
+router.post('/:testid/view/:variant', function (req, res) {
+    var o = null;
+    try {
+        o = incView(req.params.testid, req.params.variant);
+        res.send(o).end()
+    } catch (err) {
+        res.status(404).send({ errorCode: -1, msg: 'No such test ' + req.params.testid}).end();
+    }
+});
+
+
+/* POST increase conversion count for a test variant.
+ */
+router.post('/:testid/convert/:variant', function (req, res) {
+    res.send(incConversion(req.params.testid, req.params.variant)).end()
+});
+
+
+//////////////////////////////////////////////////////////////////////////
+//
+//  Helpers below this point
+//  Nothings to see. :-)
+//
+
 var addToRecent = function (tst) {
     recentTests.push(tst);
     if (recentTests.length > maxLengthRecent)
@@ -79,47 +137,6 @@ var addStats = function (o) {
     };
     return o;
 };
-
-/* GET test status. */
-router.get('/:testid?', function (req, res) {
-    var id = req.params.testid; // might be undefined, then all running tests listed
-    var o = getObj(id);
-    if (!!o) {
-        o = addStats(o);
-        res.send(o).end();
-    }
-    else if (id === undefined)
-        res.status(200).send({ tests: getMostRecent(maxLengthRecent).map(addStats) }).end();
-    else
-        res.status(404).send({ }).end();
-
-
-});
-
-
-router.put('/', function (req, res) {
-    var t = createTest();
-    addToRecent(t);
-
-    res.send({ testID: t.testID });
-});
-
-/* POST increase count on a given test variant [0 or 1]. */
-router.post('/:testid/view/:variant', function (req, res) {
-    var o = null;
-    try {
-        o = incView(req.params.testid, req.params.variant);
-        res.send(o).end()
-    } catch (err) {
-        res.status(404).send({ errorCode: -1, msg: 'No such test ' + req.params.testid}).end();
-    }
-});
-
-
-/* POST increase conversion count for a test variant. */
-router.post('/:testid/convert/:variant', function (req, res) {
-    res.send(incConversion(req.params.testid, req.params.variant)).end()
-});
 
 
 module.exports = router;
