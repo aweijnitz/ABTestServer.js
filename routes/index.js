@@ -12,7 +12,7 @@ var logger = log4js.getLogger("index");
 //
 router.get('/', function(req, res) {
   logger.debug('Serving / --> index.hjs');
-  res.render('index', { title: 'Split Testing Server' });
+  res.render('index', { title: 'This or That - A Split Test Server' });
 });
 
 
