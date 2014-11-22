@@ -6,14 +6,14 @@ var router = express.Router();
 
 var db = express.db;
 if (db == null || typeof db == 'undefined')
-    console.log("NO DB");
+    console.log("NO DB!");
 
 
 // Used to generate unique ids (see createTest below)
 var testCounter = 0;
 
 // Used to keep the most recent tests.
-// TODO: Move to DB/common store, since this only works for SINGLE instance.
+// TODO: Move to DB/common store, since this only works for a SINGLE instance.
 var recentTests = [];
 var maxLengthRecent = 20;
 
@@ -26,7 +26,7 @@ var maxLengthRecent = 20;
 /* GET test status.
  */
 router.get('/:testid?', function (req, res) {
-    var id = req.params.testid; // might be undefined, then all running tests listed
+    var id = req.params.testid; // testid might be undefined, then recent  tests returned
     var o = getObj(id);
     if (!!o) {
         o = addStats(o);
@@ -40,6 +40,7 @@ router.get('/:testid?', function (req, res) {
 
 });
 
+
 /* PUT to create new test
  */
 router.put('/', function (req, res) {
@@ -48,6 +49,7 @@ router.put('/', function (req, res) {
 
     res.send({ testID: t.testID });
 });
+
 
 /* POST increase count on a given test variant [0 or 1].
  */
@@ -67,6 +69,9 @@ router.post('/:testid/view/:variant', function (req, res) {
 router.post('/:testid/convert/:variant', function (req, res) {
     res.send(incConversion(req.params.testid, req.params.variant)).end()
 });
+
+
+
 
 
 //////////////////////////////////////////////////////////////////////////
