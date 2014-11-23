@@ -73,24 +73,18 @@ Example response (only showing relevant properties):
         variantViews: [ 0, 0 ],
         conversions: [ 0, 0 ],
         stats: { isSignificant: false,
-            isSignificantForA: false,
-            isSignificantForB: false,
             changePercent: 0,
             probabilityOfB: 0.5 } },
     { testID: 't11416257230291',
         variantViews: [ 0, 0 ],
         conversions: [ 0, 0 ],
         stats: { isSignificant: false,
-            isSignificantForA: false,
-            isSignificantForB: false,
             changePercent: 0,
             probabilityOfB: 0.5 } },
     { testID: 't21416257230293',
         variantViews: [ 0, 0 ],
         conversions: [ 0, 0 ],
         stats: { isSignificant: false,
-            isSignificantForA: false,
-            isSignificantForB: false,
             changePercent: 0,
             probabilityOfB: 0.5 } }
 ] }
@@ -109,8 +103,6 @@ Example response (only showing relevant properties):
     variantViews: [ 0, 2 ],
     conversions: [ 0, 1 ],
     stats: { isSignificant: false,
-        isSignificantForA: false,
-        isSignificantForB: false,
         changePercent: 0,
         probabilityOfB: 0.9213503964711087
     }

@@ -129,8 +129,6 @@ describe('Basic API', function () {
                                             (res.body.conversions[1]).should.equal(1);
 
                                             (res.body.stats.isSignificant).should.be.false;
-                                            (res.body.stats.isSignificantForB).should.be.false;
-                                            (res.body.stats.isSignificantForA).should.be.false;
 
                                             done();
                                         });

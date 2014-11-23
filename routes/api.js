@@ -135,8 +135,6 @@ var incConversion = function (testID, variant) {
 var addStats = function (o) {
     o.stats = {
         isSignificant: stat.isSignificant(o),
-        isSignificantForA: stat.isSignificantForA(o),
-        isSignificantForB: stat.isSignificantForB(o),
         changePercent: stat.changePercent(o),
         probabilityOfB: stat.probabilityOfB(o)
     };
